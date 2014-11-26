@@ -6,9 +6,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def restrict_access
-    if !current_user
-      flash[:alert] = "You must log in to perform this action."
-      redirect_to new_session_path
+    unless current_user
+      redirect_to new_session_path, alert: "You must log in to perform this action."
     end
   end
 
@@ -16,5 +15,16 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  helper_method :current_user
+  def verify_admin
+    unless is_admin?
+      redirect_to movies_path, alert: "You are not an administrator!"
+    end
+  end
+
+  def is_admin?
+    current_user
+    @current_user && @current_user.id == 1
+  end
+
+  helper_method :current_user, :is_admin?
 end
