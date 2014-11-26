@@ -7,7 +7,27 @@ class Admin::UsersController < ApplicationController
     @admin_user = User.find(params[:id])
   end
 
+  def edit
+    @admin_user = User.find(params[:id])
+  end
+
+  def update
+    @admin_user = User.find(params[:id])
+
+    if @admin_user.update(user_params)
+      redirect_to admin_user_path(@admin_user)
+    else
+      render :edit
+    end
+  end
+
   # def destroy
   #   @admin_user = User.new
   # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:firstname, :lastname, :email)
+  end
 end
