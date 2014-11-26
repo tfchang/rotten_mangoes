@@ -11,6 +11,10 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_in_future
 
+  def review_average
+    reviews.average(:rating_out_of_ten)
+  end
+
   private
 
   def release_date_in_future
