@@ -28,9 +28,9 @@
   </div>
   <div>
     <%= f.label :poster_image %><br />
-    <%= f.file_field :poster_image %>
-<!--     <%= f.label "poster_image_url" %><br />
-    <%= f.text_field "poster_image_url" %> -->
+    <%= f.file_field :poster_image %><br />
+    <%= f.label :remote_poster_image_url, "or image URL:" %><br />
+    <%= f.text_field :remote_poster_image_url %>
   </div>
   <div>
     <%= f.label "description" %><br />
