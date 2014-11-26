@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
 
+  before_action :restrict_access
   before_action :load_movie
 
   def new
