@@ -1,0 +1,15 @@
+<h1>Rotten Mangoes</h1>
+<h2>Admin Dashboard</h2>
+
+<%= link_to "Create a new user", new_admin_user_path %>
+<hr>
+
+<% @admin_users.each do |user| %>
+  <h2>
+    <%= link_to user.full_name, admin_user_path(user) %>
+  </h2>
+  <h3>
+    <%= user.email %>
+  </h3>
+  <hr>
+<% end %>
