@@ -6,27 +6,33 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# This will guess the User class
+
+# clear the users table
+User.destroy_all
+
 FactoryGirl.define do
   factory :admin, class: User do
-    firstname  "Admin"
-    lastname   "Account"
+    firstname   "Admin"
+    lastname    "Account"
     email       "admin@gmail.com"
     password    "admin1"
+    admin       true
   end
 
   factory :test_user, class: User do
-    firstname  "Test"
-    lastname   "User"
+    firstname   "Test"
+    lastname    "User"
     email       "test@gmail.com"
     password    "testing1"
+    admin       false
   end
 
   factory :user, class: User do
-    firstname  { Faker::Name.first_name }
-    lastname   { Faker::Name.last_name }
-    email      { Faker::Internet.email }
-    password   { Faker::Internet.password(8) }
+    firstname   { Faker::Name.first_name }
+    lastname    { Faker::Name.last_name }
+    email       { Faker::Internet.email }
+    password    { Faker::Internet.password(8) }
+    admin       false
   end
 
   # factory :movie, class: Movie do
