@@ -1,0 +1,19 @@
+<h2>Admin Dashboard</h2>
+
+<%= link_to "All Users", admin_users_path %>
+<br />
+
+<h2>
+  <%= @admin_user.full_name %>
+</h2>
+<p>
+  <%= link_to "Edit user", edit_admin_user_path(@admin_user) %> <br />
+  <%= link_to "Delete user", admin_user_path(@admin_user), method: :delete, confirm: "Are you sure you want to delete this user?" %>)
+</p>
+<h3>
+  <%= @admin_user.email %>
+</h3>
+<h4> 
+  Created at <%= format_date(@admin_user.created_at) %> <br />
+  Last updated at <%= format_date(@admin_user.updated_at) %>
+</h4>
