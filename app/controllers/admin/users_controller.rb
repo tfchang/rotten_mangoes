@@ -36,7 +36,7 @@ class Admin::UsersController < ApplicationController
 
   def verify_admin
     unless is_admin?
-      redirect_to root, alert: "You are not an administrator!"
+      redirect_to movies_path, alert: "You are not an administrator!"
     end
   end
 
