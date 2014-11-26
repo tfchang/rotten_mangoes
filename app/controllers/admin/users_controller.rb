@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :verify_admin
 
   def index
-    @admin_users = User.all.page(params[:page]).per(2)
+    @admin_users = User.all.page(params[:page]).per(10)
   end
 
   def show

@@ -33,8 +33,13 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rmagick'
 gem 'carrierwave'
 
-# User kaminari for pagination
+# Use kaminari for pagination
 gem 'kaminari'
+
+# Use FactoryGirl and Faker to seed data
+gem "factory_girl_rails", "~> 4.0"
+gem 'faker'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
