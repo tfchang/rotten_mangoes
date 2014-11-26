@@ -3,12 +3,21 @@
 
 <hr>
 
-<% @admin_users.each do |user| %>
-  <h2>
-    <%= link_to user.full_name, admin_user_path(user) %>
-  </h2>
-  <h3>
-    <%= user.email %>
-  </h3>
-  <hr>
-<% end %>
+<table border="1">
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+  </tr>
+  <% @admin_users.each do |user| %>
+    <tr>
+      <td>
+        <h4>
+          <%= link_to user.full_name, admin_user_path(user) %>
+        </h4>
+      </td>
+      <td>
+        <%= user.email %>
+      </td>
+    </tr>
+  <% end %>
+</table>
