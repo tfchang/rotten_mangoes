@@ -1,27 +1,35 @@
-<%= link_to "All Movies", movies_path %>
+<%= link_to "All Movies", movies_path, class: "new_edit" %>
 <br />
 <%= link_to image_tag(@movie.poster_image_url.to_s), movie_path(@movie) %>
 <h2>
-  <%= @movie.title %> (<%= link_to "edit movie", edit_movie_path(@movie) %>, <%= link_to "delete movie", movie_path(@movie), method: :delete, confirm: "Are you sure you want to delete this movie?" %>)
+  <%= @movie.title %>
 </h2>
-<h3>
+<h4>
   <%= format_date(@movie.release_date) %>
-</h3>
+</h4>
 <h4> 
-  Director: <%= @movie.director %> | Running Time: <%= @movie.runtime_in_minutes %> minutes
+  Director: <%= @movie.director %> <br />
+  Running Time: <%= @movie.runtime_in_minutes %> minutes
 </h4>
 <p>
   <%= @movie.description %>
 </p>
 
 <hr>
+<%= link_to "edit movie", edit_movie_path(@movie), class: "new_edit" %>
+<br />
+<%= link_to "delete movie", movie_path(@movie), method: :delete, 
+    data: { confirm: "Are you sure you want to delete this movie?" },
+    class: "new_edit" %>
+
+<hr>
 
 <h3>
-  Reviews of <em> <%= @movie.title %> </em>
+  Reviews
 </h3>
-<h5>
-  Average Review: <%= @movie.review_average %> 
-</h5>
+<h4>
+  Average Rating: <%= @movie.review_average %> 
+</h4>
 
 <% if current_user %>
   <% @movie.reviews.each do |review| %>
@@ -30,9 +38,9 @@
     <small> by: <%= review.user.full_name %> </small>
     <br />
   <% end %>
-  <p>
-    <%= link_to "Write your review!", new_movie_review_path(@movie) %>
-  </p>
+
+  <hr>
+  <%= link_to "Write your review!", new_movie_review_path(@movie), class: "new_edit" %>
 <% else %>
   <p>
     <%= link_to "Log in", new_session_path %> to see reviews and add your own.

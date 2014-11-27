@@ -40,6 +40,8 @@ gem 'kaminari'
 gem "factory_girl_rails", "~> 4.0"
 gem 'faker'
 
+# Use Bootstrap to style
+gem 'bootstrap-sass'
 
 # Use unicorn as the app server
 # gem 'unicorn'

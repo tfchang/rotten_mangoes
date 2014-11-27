@@ -1,32 +1,44 @@
-<h1>Rotten Mangoes</h1>
-<br />
-<%= link_to "Enter a new movie!", new_movie_path %>
+<%= link_to "Submit a new movie!", new_movie_path, class: "new_edit" %>
 <hr>
 
-<%= form_tag(movies_path, method: "get") do %>
-  <h3>Search Movies</h3>
-  <%= label_tag(:q_title, "By Title: ") %>
-  <%= text_field_tag(:q_title) %>
-  <br />
-  <%= label_tag(:q_director, "By Director: ") %>
-  <%= text_field_tag(:q_director) %>
-  <br />
-  <%= label_tag(:q_runtime_from, "By Running Time: ") %>
-  <%= number_field_tag(:q_runtime_from, nil, in: 1..200, size: 4) %>
-  <%= label_tag(:q_runtime_to, " minutes to ") %>
-  <%= number_field_tag(:q_runtime_to, nil, in: 1..200, size: 4) %> minutes
-  <br />
-  <%= submit_tag("Search") %> | <%= button_tag("Reset", type: "reset") %>
-<% end %>
-<hr>
+<div class="search_box">
+  <%= form_tag(movies_path, method: "get") do %>
+    <h3>Search Movies</h3>
+    <%= label_tag(:q_title, "By Title: ") %>
+    <%= text_field_tag(:q_title) %>
+    <br />
+    <%= label_tag(:q_director, "By Director: ") %>
+    <%= text_field_tag(:q_director) %>
+    <br />
+    <%= label_tag(:q_runtime_from, "By Running Time: ") %>
+    <%= number_field_tag(:q_runtime_from, nil, in: 1..200, size: 4) %>
+    <%= label_tag(:q_runtime_to, " minutes to ") %>
+    <%= number_field_tag(:q_runtime_to, nil, in: 1..200, size: 4) %> minutes
+    <br />
+    <%= submit_tag("Search") %> | <%= button_tag("Reset", type: "reset") %>
+  <% end %>
+  <hr>
+</div>
 
 <%= paginate @movies %>
 
-<% @movies.each do |movie| %>
-  <%= link_to image_tag(movie.poster_image_url(:thumb).to_s), movie_path(movie) %>
-  <h2><%= link_to movie.title, movie_path(movie) %></h2>
-  <h3><%= format_date(movie.release_date) %></h3>
-  <h4>Dir. <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
-  <p><%= movie.description %></p>
-  <hr>
-<% end %>
+<div class="list-group">
+  <% @movies.each do |movie| %>
+    <%= link_to image_tag(movie.poster_image_url(:thumb).to_s), movie_path(movie) %>
+    <h3>
+      <%= link_to movie.title, movie_path(movie) %>
+    </h3>
+    <h4>
+      <%= format_date(movie.release_date) %>
+    </h4>
+    <h5>
+      Directed by: <%= movie.director %>
+    </h5>
+    <h5>
+      Running Time: <%= movie.runtime_in_minutes %> minutes
+    </h5>
+    <p>
+      <%= movie.description %>
+    </p>
+  <% end %>
+</div>
