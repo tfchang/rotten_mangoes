@@ -1,5 +1,5 @@
 <% if @movie.errors.any? %>
-  <div>
+  <div class="alert alert-danger" role="alert">
     <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
     <ul>
       <% @movie.errors.full_messages.each do |msg| %>

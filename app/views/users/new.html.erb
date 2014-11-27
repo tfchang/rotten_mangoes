@@ -1,7 +1,7 @@
 <h2>New User Sign-up</h2>
 
 <% if @user.errors.any? %>
-  <div>
+  <div class="alert alert-danger" role="alert">
     <%= pluralize(@user.errors.count, "error") %> prevented the user account from being created:
     <ul>
       <% @user.errors.full_messages.each do |msg| %>

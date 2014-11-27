@@ -1,5 +1,5 @@
 <% if @admin_user.errors.any? %>
-  <div>
+  <div class="alert alert-danger" role="alert">
     <%= pluralize(@admin_user.errors.count, "error") %> prevented this user from being submitted:
     <ul>
       <% @admin_user.errors.full_messages.each do |msg| %>
