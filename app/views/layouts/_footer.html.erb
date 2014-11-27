@@ -1,9 +1,15 @@
 <footer>
   <small>
     <% if current_user %>
-      You are signed in with: <%= current_user.full_name %> (<%= link_to "Log Out", session_path("current"), method: :delete %>)
+      You are signed in as: <%= current_user.full_name %> (<%= link_to "Log Out", session_path("current"), method: :delete %>)
     <% else %>
       <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>
+    <% end %>
+
+    <% if is_admin? %>
+      <p>
+        <%= link_to "Admin Dashboard", admin_users_path %>
+      </p>
     <% end %>
   </small>
 </footer>

@@ -1,0 +1,26 @@
+<h2>Admin Dashboard</h2>
+
+<%= link_to "Create User", new_admin_user_path, class: "new_edit" %>
+<hr>
+
+<%= paginate @admin_users %>
+<br />
+
+<table border="1">
+  <tr>
+    <th>User Name</th>
+    <th>Email</th>
+  </tr>
+  <% @admin_users.each do |user| %>
+    <tr>
+      <td>
+        <h4>
+          <%= link_to user.full_name, admin_user_path(user) %>
+        </h4>
+      </td>
+      <td>
+        <%= user.email %>
+      </td>
+    </tr>
+  <% end %>
+</table>

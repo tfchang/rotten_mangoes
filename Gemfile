@@ -29,6 +29,20 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use carrierwave for file uploading, rmagick for image resizing
+gem 'rmagick'
+gem 'carrierwave'
+
+# Use kaminari for pagination
+gem 'kaminari'
+
+# Use FactoryGirl and Faker to seed data
+gem "factory_girl_rails", "~> 4.0"
+gem 'faker'
+
+# Use Bootstrap to style
+gem 'bootstrap-sass'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

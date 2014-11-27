@@ -1,5 +1,5 @@
 <% if @movie.errors.any? %>
-  <div>
+  <div class="alert alert-danger" role="alert">
     <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
     <ul>
       <% @movie.errors.full_messages.each do |msg| %>
@@ -27,8 +27,10 @@
     <%= f.number_field "runtime_in_minutes" %>
   </div>
   <div>
-    <%= f.label "poster_image_url" %><br />
-    <%= f.text_field "poster_image_url" %>
+    <%= f.label :poster_image %><br />
+    <%= f.file_field :poster_image %><br />
+    <%= f.label :remote_poster_image_url, "or image URL:" %><br />
+    <%= f.text_field :remote_poster_image_url %>
   </div>
   <div>
     <%= f.label "description" %><br />

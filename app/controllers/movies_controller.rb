@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    search
+    @movies = @movies.page(params[:page]).per(10)
   end
 
   def show
@@ -45,7 +46,15 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(
-      :title, :release_date, :director, :runtime_in_minutes, :poster_image_url, :description
+      :title, :release_date, :director, :runtime_in_minutes, :poster_image, :remote_poster_image_url, :description
     )
+  end
+
+  def search
+    @movies = Movie.all
+    @movies = @movies.query_title(params[:q_title]) unless params[:q_title].blank?
+    @movies = @movies.query_director(params[:q_director]) unless params[:q_director].blank?
+    @movies = @movies.query_runtime_from(params[:q_runtime_from]) unless params[:q_runtime_from].blank?
+    @movies = @movies.query_runtime_to(params[:q_runtime_to]) unless params[:q_runtime_to].blank?
   end
 end

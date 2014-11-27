@@ -1,9 +1,10 @@
-<%= link_to "Back to movie", movie_path(@movie) %>
-<br />
+<%= link_to "Show Movie", movie_path(@movie),  class: "new_edit" %>
+<hr>
+
 <h2>Write a review for <em><%= @movie.title %></em>.</h2>
 
 <% if @review.errors.any? %>
-  <div>
+  <div class="alert alert-danger" role="alert">
     <%= pluralize(@review.errors.count, "error") %> prevented the review from being saved:
     <ul>
       <% @review.errors.full_messages.each do |msg| %>
