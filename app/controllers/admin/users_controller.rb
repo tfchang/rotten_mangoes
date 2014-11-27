@@ -6,6 +6,20 @@ class Admin::UsersController < ApplicationController
     @admin_users = User.all.page(params[:page]).per(10)
   end
 
+  def new
+    @admin_user = User.new
+  end
+
+  def create
+    @admin_user = User.new(user_params)
+
+    if @admin_user.save
+      redirect_to admin_user_path(@admin_user), notice: "#{@admin_user.full_name} was created."
+    else
+      render :new
+    end
+  end
+
   def show
     @admin_user = User.find(params[:id])
   end
@@ -18,7 +32,7 @@ class Admin::UsersController < ApplicationController
     @admin_user = User.find(params[:id])
 
     if @admin_user.update(user_params)
-      redirect_to admin_user_path(@admin_user)
+      redirect_to admin_user_path(@admin_user), notice: "#{@admin_user.full_name} was updated."
     else
       render :edit
     end
@@ -33,6 +47,6 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:firstname, :lastname, :email)
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :admin)
   end
 end

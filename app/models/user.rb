@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates :firstname, presence: true
   validates :lastname, presence: true
   validates :password, length: { in: 6..20 }, on: :create
+  validates :admin, presence: true
 
   def full_name
     "#{firstname} #{lastname}"
