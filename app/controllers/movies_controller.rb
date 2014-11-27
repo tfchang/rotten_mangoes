@@ -1,9 +1,11 @@
 class MoviesController < ApplicationController
   def index
-    if params[:search_title]
-      @movies = Movie.where(search_sql).page(params[:page]).per(5)
-    else
+    sql = search_sql
+
+    if sql.blank?
       @movies = Movie.all.page(params[:page]).per(10)
+    else
+      @movies = Movie.where(search_sql).page(params[:page]).per(5)
     end
   end
 
@@ -56,11 +58,17 @@ class MoviesController < ApplicationController
   def search_sql
     sql_array = []
     
-    if params[:q_title]
+    unless params[:q_title].blank?
       sql_array << "(title like '%#{params[:q_title]}%')"
     end
-    if params[:q_director]
+    unless params[:q_director].blank?
       sql_array << "(director like '%#{params[:q_director]}%')"
+    end
+    unless params[:q_duration_from].blank?
+      sql_array << "(runtime_in_minutes >= #{params[:q_duration_from]})"
+    end
+    unless params[:q_duration_to].blank?
+      sql_array << "(runtime_in_minutes <= #{params[:q_duration_to]})"
     end
 
     sql = sql_array.join(" AND ")
