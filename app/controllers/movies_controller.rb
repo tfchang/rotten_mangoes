@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   def index
     if params[:search_title]
-      @movies = Movie.where("title like ?", "%#{params[:search_title]}%").page(params[:page]).per(5)
+      @movies = Movie.where(search_sql).page(params[:page]).per(5)
     else
       @movies = Movie.all.page(params[:page]).per(10)
     end
@@ -51,5 +51,18 @@ class MoviesController < ApplicationController
     params.require(:movie).permit(
       :title, :release_date, :director, :runtime_in_minutes, :poster_image, :remote_poster_image_url, :description
     )
+  end
+
+  def search_sql
+    sql_array = []
+    
+    if params[:q_title]
+      sql_array << "(title like '%#{params[:q_title]}%')"
+    end
+    if params[:q_director]
+      sql_array << "(director like '%#{params[:q_director]}%')"
+    end
+
+    sql = sql_array.join(" AND ")
   end
 end
