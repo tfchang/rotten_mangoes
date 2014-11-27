@@ -1,6 +1,10 @@
 class MoviesController < ApplicationController
   def index
-    @movies = Movie.all
+    if params[:search_title]
+      @movies = Movie.where("title like ?", "%#{params[:search_title]}%").page(params[:page]).per(5)
+    else
+      @movies = Movie.all.page(params[:page]).per(10)
+    end
   end
 
   def show
