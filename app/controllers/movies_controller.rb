@@ -53,7 +53,9 @@ class MoviesController < ApplicationController
   end
 
   def search
-    Movie.query_title(params[:q_title]).query_director(params[:q_director]).query_runtime_from(params[:q_runtime_from]).query_runtime_to(params[:q_runtime_to])
+    Movie.query_name(params[:q_name]).query_runtime_from(params[:q_runtime_from]).query_runtime_to(params[:q_runtime_to])
+
+    # Movie.query_title(params[:q_title]).query_director(params[:q_director]).query_runtime_from(params[:q_runtime_from]).query_runtime_to(params[:q_runtime_to])
 
     # @movies = Movie.all
     # @movies = @movies.query_title(params[:q_title]) unless params[:q_title].blank?

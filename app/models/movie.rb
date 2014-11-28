@@ -18,6 +18,9 @@ class Movie < ActiveRecord::Base
   scope :query_director,      -> (q_director) { 
     q_director.blank? ? all : where("director like ?", "%#{q_director}%") 
   }
+  scope :query_name,          -> (q_name)     {
+    q_name.blank? ? all : where("(title like ?) OR (director like ?)", "%#{q_name}%", "%#{q_name}%")
+  }
   scope :query_runtime_from,  -> (q_runtime)  { 
     q_runtime.blank? ? all : where("runtime_in_minutes >= ?", q_runtime)
   }
