@@ -11,13 +11,16 @@
   <h3>
     Reviews by this user:
   </h3>
-  <% @profile_user.reviews.each do |review| %>
-    <%= link_to review.movie.title, movie_path(review.movie) %>
-    <p> <%= review.text %> </p>
-    <p> <%= review.rating_out_of_ten %>/10 </p>
-    <br />
-  <% end %>
-  <hr />
+  <div class="list-group">
+    <% @profile_user.reviews.each do |review| %>
+      <div class="list-group-item">
+        <%= link_to review.movie.title, movie_path(review.movie) %>
+        <p> <%= review.text %> </p>
+        <p> <%= review.rating_out_of_ten %>/10 </p>
+      </div>
+      <hr />
+    <% end %>
+  </div>
 <% else %>
   <p class="ask_login">
     <%= link_to "Log in", new_session_path %> to see reviews by this user.
