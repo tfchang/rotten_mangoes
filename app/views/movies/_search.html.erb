@@ -1,15 +1,15 @@
 <%= form_tag(movies_path, method: "get") do %>
-    <h3>Search Movies</h3>
-    <%= label_tag(:q_title, "By Title: ") %>
-    <%= text_field_tag(:q_title) %>
-    <br />
-    <%= label_tag(:q_director, "By Director: ") %>
-    <%= text_field_tag(:q_director) %>
-    <br />
-    <%= label_tag(:q_runtime_from, "By Running Time: ") %>
-    <%= number_field_tag(:q_runtime_from, nil, in: 1..200, size: 4) %>
-    <%= label_tag(:q_runtime_to, " minutes to ") %>
-    <%= number_field_tag(:q_runtime_to, nil, in: 1..200, size: 4) %> minutes
-    <br />
-    <%= submit_tag("Search") %> | <%= button_tag("Reset", type: "reset") %>
+  <h3>Search Movies</h3>
+  <%= label_tag(:q_title, "By Title: ") %>
+  <%= text_field_tag(:q_title) %>
+  <br />
+  <%= label_tag(:q_director, "By Director: ") %>
+  <%= text_field_tag(:q_director) %>
+  <br />
+  <%= label_tag(:q_runtime_from, "By Running Time: ") %>
+  <%= number_field_tag(:q_runtime_from, nil, in: 1..200, size: 4) %>
+  <%= label_tag(:q_runtime_to, " minutes to ") %>
+  <%= number_field_tag(:q_runtime_to, nil, in: 1..200, size: 4) %> minutes
+  <br />
+  <%= submit_tag("Search") %> | <%= button_tag("Reset", type: "reset") %>
 <% end %>
