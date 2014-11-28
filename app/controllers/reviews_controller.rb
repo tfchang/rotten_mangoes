@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
   private
 
   def load_movie
-    @movie = Movie.find(params[:movie_id])
+    @movie = Movie.find(params[:movie_id].to_i)
   end
 
   def review_params
