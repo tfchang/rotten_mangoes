@@ -10,31 +10,31 @@
 <% end %>
 
 <%= form_for([:admin, @admin_user]) do |f| %>
-  <div>
+  <div class="input-group">
     <%= f.label "firstname" %><br />
     <%= f.text_field "firstname" %>
   </div>
-  <div>
+  <div class="input-group">
     <%= f.label "lastname" %><br />
     <%= f.text_field "lastname" %>
   </div>
-  <div>
+  <div class="input-group">
     <%= f.label "email" %><br />
     <%= f.text_field "email" %>
   </div>
-  <div>
+  <div class="input-group">
     <%= f.label "password" %><br>
     <%= f.password_field "password" %>
   </div>
-  <div>
+  <div class="input-group">
     <%= f.label "password_confirmation" %><br>
     <%= f.password_field "password_confirmation" %>
   </div>
-  <div>
-    <%= f.label "admin", "Is this user an admin?" %>
+  <div class="input-group">
+    <%= f.label "admin", "Is this user an admin?" %> &nbsp;
     <%= f.check_box "admin" %>
   </div>
-  <div>
+  <div class="input-group">
     <%= f.submit "Submit" %>
   </div>
 <% end %>

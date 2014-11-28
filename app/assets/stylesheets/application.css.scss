@@ -18,6 +18,10 @@
  *= require_self
  */
 
+.input-group {
+  margin: 12px 0;
+}
+
  footer {
   margin: 30px 15px;
   padding: 10px 15px;
@@ -26,8 +30,12 @@
   font-size: 18px;
  }
 
+/* 
+  Note: Class selectors with _ are mine. Those with - are bootstrap
+*/
+
 .new_edit {
-  display: block;
+  display: inline-block;
   width: 200px;
   padding: 10px;
   background-color: #000033;
@@ -51,4 +59,8 @@
 .ask_login {
   font-size: 18px;
   padding-bottom: 18px;
+}
+
+.movie_detail {
+  color: #000066;
 }

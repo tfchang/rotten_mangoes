@@ -1,16 +1,16 @@
-<%= link_to image_tag(movie.poster_image_url(:thumb).to_s), movie_path(movie) %>
-<h3>
-  <%= link_to movie.title, movie_path(movie) %>
-</h3>
-<h4>
-  <%= format_date(movie.release_date) %>
-</h4>
-<h5>
-  Directed by: <%= movie.director %>
-</h5>
-<h5>
-  Running Time: <%= movie.runtime_in_minutes %> minutes
-</h5>
-<p>
-  <%= movie.description %>
-</p>
+<div class="list-group-item">
+  <%= link_to image_tag(movie.poster_image_url(:thumb).to_s), movie_path(movie) %>
+  <h3>
+    <%= link_to movie.title, movie_path(movie) %>
+  </h3>
+  <h4>
+    <%= format_date(movie.release_date) %>
+  </h4>
+  <h5 class="movie_detail">
+    Directed by: <%= movie.director %> ||
+    Running Time: <%= movie.runtime_in_minutes %> minutes
+  </h5>
+  <p>
+    <%= movie.description %>
+  </p>
+</div>
