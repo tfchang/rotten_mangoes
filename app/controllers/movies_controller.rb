@@ -1,11 +1,12 @@
 class MoviesController < ApplicationController
+  before_action :restrict_access, except: [:index, :show]
+
   def index
-    search
-    @movies = @movies.page(params[:page]).per(10)
+    @movies = search.page(params[:page]).per(10)
   end
 
   def show
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:id].to_i)
   end
 
   def new
@@ -13,7 +14,7 @@ class MoviesController < ApplicationController
   end
 
   def edit
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:id].to_i)
   end
 
   def create
@@ -27,7 +28,7 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:id].to_i)
 
     if @movie.update(movie_params)
       redirect_to movie_path(@movie)
@@ -37,7 +38,7 @@ class MoviesController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find(params[:id].to_i)
     @movie.destroy
     redirect_to movies_path
   end
@@ -51,10 +52,6 @@ class MoviesController < ApplicationController
   end
 
   def search
-    @movies = Movie.all
-    @movies = @movies.query_title(params[:q_title]) unless params[:q_title].blank?
-    @movies = @movies.query_director(params[:q_director]) unless params[:q_director].blank?
-    @movies = @movies.query_runtime_from(params[:q_runtime_from]) unless params[:q_runtime_from].blank?
-    @movies = @movies.query_runtime_to(params[:q_runtime_to]) unless params[:q_runtime_to].blank?
+    Movie.query_name(params[:q_name]).query_runtime_from(params[:q_runtime_from]).query_runtime_to(params[:q_runtime_to])
   end
 end

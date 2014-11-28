@@ -10,6 +10,7 @@
   <tr>
     <th>User Name</th>
     <th>Email</th>
+    <th>Preview As</th>
   </tr>
   <% @admin_users.each do |user| %>
     <tr>
@@ -20,6 +21,9 @@
       </td>
       <td>
         <%= user.email %>
+      </td>
+      <td>
+        <%= link_to "Preview", "/session/admin_preview/#{user.id}" %>
       </td>
     </tr>
   <% end %>

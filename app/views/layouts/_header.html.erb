@@ -4,15 +4,3 @@
     This Rotten Tomatoes clone allows users to submit movies and review them. It is a learning project for web development on Rails. Please don't take it seriously.
   </p>
 </div>
-
-<% if flash[:alert].present? %>
-  <div class="alert alert-warning" role="alert">
-    <%= flash.alert %>
-  </div> 
-<% end %>
-
-<% if flash[:notice].present? %>
-  <div class="alert alert-success" role="alert">
-    <%= flash[:notice] %>
-  </div> 
-<% end %>

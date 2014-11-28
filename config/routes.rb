@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   resources :movies do
     resources :reviews, only: [:new, :create]
   end
-  resources :users, only: [:new, :create]
-  resources :sessions, only: [:new, :create, :destroy]
+  
+  resources :users, only: [:new, :create, :show]
+  
+  get '/session/admin_preview/:id', to: 'sessions#admin_preview'
+  get '/session/admin_switchback',  to: 'sessions#admin_switchback'
+
+  resource  :session, only: [:new, :create, :destroy]
 
   namespace :admin do
     resources :users
