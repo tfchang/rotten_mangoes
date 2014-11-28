@@ -1,5 +1,12 @@
-<%= link_to "Submit a new movie!", new_movie_path, class: "new_edit" %>
-<hr>
+
+<% if current_user %>
+  <%= link_to "Submit a new movie!", new_movie_path, class: "new_edit" %>
+  <hr>
+<% else %>
+  <p class="ask_login">
+    <%= link_to "Log in", new_session_path %> to submit new movies!
+  </p>
+<% end %>
 
 <div class="search_box">
   <%= form_tag(movies_path, method: "get") do %>

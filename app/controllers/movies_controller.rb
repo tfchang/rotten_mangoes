@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :restrict_access, except: [:index, :show]
+
   def index
     search
     @movies = @movies.page(params[:page]).per(10)
