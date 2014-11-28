@@ -2,7 +2,6 @@ class MoviesController < ApplicationController
   before_action :restrict_access, except: [:index, :show]
 
   def index
-    # search
     @movies = search.page(params[:page]).per(10)
   end
 
@@ -54,13 +53,5 @@ class MoviesController < ApplicationController
 
   def search
     Movie.query_name(params[:q_name]).query_runtime_from(params[:q_runtime_from]).query_runtime_to(params[:q_runtime_to])
-
-    # Movie.query_title(params[:q_title]).query_director(params[:q_director]).query_runtime_from(params[:q_runtime_from]).query_runtime_to(params[:q_runtime_to])
-
-    # @movies = Movie.all
-    # @movies = @movies.query_title(params[:q_title]) unless params[:q_title].blank?
-    # @movies = @movies.query_director(params[:q_director]) unless params[:q_director].blank?
-    # @movies = @movies.query_runtime_from(params[:q_runtime_from]) unless params[:q_runtime_from].blank?
-    # @movies = @movies.query_runtime_to(params[:q_runtime_to]) unless params[:q_runtime_to].blank?
   end
 end
