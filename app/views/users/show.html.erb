@@ -5,7 +5,7 @@
   <%= @profile_user.email %>
 </h4>
 
-<hr>
+<hr />
 
 <% if current_user %>
   <h3>
@@ -17,7 +17,7 @@
     <p> <%= review.rating_out_of_ten %>/10 </p>
     <br />
   <% end %>
-  <hr>
+  <hr />
 <% else %>
   <p class="ask_login">
     <%= link_to "Log in", new_session_path %> to see reviews by this user.

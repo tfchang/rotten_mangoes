@@ -35,8 +35,18 @@
 }
 
 .search_box {
-  width: 450px;
-  padding-left: 10px;
+  width: 420px;
+  padding: 0 0 20px 20px;
   border: 1px solid #000033;
   color: #000033;
+
+  hr {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+}
+
+.ask_login {
+  font-size: 18px;
+  padding-bottom: 18px;
 }
