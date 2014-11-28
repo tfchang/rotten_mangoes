@@ -1,15 +1,15 @@
 <h2>User Login</h2>
 
 <%= form_tag session_path do %>
-  <div>
+  <div class="input-group">
     <%= label_tag "email" %> <br />
     <%= text_field_tag "email" %>
   </div>
-  <div>
+  <div class="input-group">
     <%= label_tag :password %> <br />
     <%= password_field_tag :password %>
   </div>
-  <div>
+  <div class="input-group">
     <%= submit_tag "Log In" %>
   </div>
 <% end %>
