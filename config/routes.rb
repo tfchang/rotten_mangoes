@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   
   resources :users, only: [:new, :create, :show]
   
+  get '/session/admin_preview/:id', to: 'sessions#admin_preview'
+  get '/session/admin_switchback',  to: 'sessions#admin_switchback'
+
   resource  :session, only: [:new, :create, :destroy]
 
   namespace :admin do

@@ -21,15 +21,15 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @admin_user = User.find(params[:id])
+    @admin_user = User.find(params[:id].to_i)
   end
 
   def edit
-    @admin_user = User.find(params[:id])
+    @admin_user = User.find(params[:id].to_i)
   end
 
   def update
-    @admin_user = User.find(params[:id])
+    @admin_user = User.find(params[:id].to_i)
 
     if @admin_user.update(user_params)
       redirect_to admin_user_path(@admin_user), notice: "#{@admin_user.full_name} was updated."
@@ -39,7 +39,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
-    @admin_user = User.find(params[:id])
+    @admin_user = User.find(params[:id].to_i)
     UserMailer.delete_user_email(@admin_user).deliver
     @admin_user.destroy
 

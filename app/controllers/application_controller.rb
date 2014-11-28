@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id].to_i) if session[:user_id]
   end
 
   def verify_admin
@@ -22,9 +22,14 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
+    return true if session[:admin_id]
     current_user
     @current_user && @current_user.admin
   end
 
-  helper_method :current_user, :is_admin?
+  def preview_mode?
+    is_admin? && (session[:user_id].to_i != session[:admin_id].to_i)
+  end
+
+  helper_method :current_user, :is_admin?, :preview_mode?
 end
