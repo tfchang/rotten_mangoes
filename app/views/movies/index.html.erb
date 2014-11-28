@@ -1,7 +1,7 @@
 
 <% if current_user %>
   <%= link_to "Submit a new movie!", new_movie_path, class: "new_edit" %>
-  <hr>
+  <hr />
 <% else %>
   <p class="ask_login">
     <%= link_to "Log in", new_session_path %> to submit new movies!
@@ -12,7 +12,7 @@
   <%= render "search" %>
 </div>
 
-<hr>
+<hr />
 <%= paginate @movies %>
 
 <div class="list-group">

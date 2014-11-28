@@ -1,5 +1,5 @@
 <%= link_to "All Users", admin_users_path, class: "new_edit" %>
-<hr>
+<hr />
 
 <h3>
   <%= @admin_user.full_name %>
@@ -11,7 +11,7 @@
   Created at <%= format_date(@admin_user.created_at) %> <br />
   Last updated at <%= format_date(@admin_user.updated_at) %>
 </p>
-<hr>
+<hr />
 
 <%= link_to "Edit user", edit_admin_user_path(@admin_user), class: "new_edit" %> <br />
 <%= link_to "Delete user", admin_user_path(@admin_user), method: :delete, 
