@@ -8,6 +8,7 @@ After finishing the recommended functionalities and enhancements, I took the pro
 
 To Fix/Add:
 - OMDB error response handling
+- Automatic poster image uploading
 - A link from the admin dashboard to the add-new-movies page
 
 In the future, I plan to expand the movie loading functionality and modify the Movie model to prevent duplicate entries.
