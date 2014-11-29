@@ -1,1 +1,5 @@
-This web app began at Lighthouse Labs as a learning project to get acquainted with Rails.
+This web app began at Lighthouse Labs as a learning project to get acquainted with Rails. We were encouraged to use Bootstrap for styling, and gems such as carrierwave (file uploader) and kaminari (pagination).
+
+After finishing the recommended functionalities and enhancements, I took the project further. The admins for the site can load movies from the Open Movie Database in addtion to manually submit each new movie by filling out a form as regular users do. Utilizing the OMDB API, an admin can load five movies at random each time.
+
+In the future, I plan to expand the movie loading functionality and modify the Movie model to prevent duplicate entries.
