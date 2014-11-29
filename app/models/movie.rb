@@ -10,7 +10,7 @@ class Movie < ActiveRecord::Base
   validates :description, presence: true
   validates :release_date, presence: true
 
-  validate :release_date_in_future
+  # validate :release_date_in_future
 
   scope :query_title,         -> (q_title)    { 
     q_title.blank? ? all : where("title like ?", "%#{q_title}%") 
@@ -34,9 +34,12 @@ class Movie < ActiveRecord::Base
 
   private
 
-  def release_date_in_future
-    if release_date.present? && release_date < Date.today
-      errors.add(:release_date, "should probably be in the future")
-    end
-  end
+  # This method was required in the tutorial, but it makes no sense to include only
+  # upcoming movies on a review website 
+  #  
+  # def release_date_in_future
+  #   if release_date.present? && release_date < Date.today
+  #     errors.add(:release_date, "should probably be in the future")
+  #   end
+  # end
 end
