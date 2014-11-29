@@ -8,6 +8,6 @@ class Admin::MoviesController < ApplicationController
   end
 
   def create
-
+    redirect_to movies_path, notice: "Ten new movies were loaded!"
   end
 end
