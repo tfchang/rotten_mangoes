@@ -43,6 +43,9 @@ gem 'faker'
 # Use Bootstrap to style
 gem 'bootstrap-sass'
 
+# User pry for debugging in development
+gem 'pry', group: :development
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :restrict_access, except: [:index, :show]
 
   def index
-    @movies = search.page(params[:page]).per(10)
+    @movies = search.order(updated_at: :desc).page(params[:page]).per(10)
   end
 
   def show
