@@ -1,17 +1,14 @@
 This web app began at Lighthouse Labs as a learning project to get acquainted with Rails. We were encouraged to use Bootstrap for styling, and gems such as carrierwave (file uploader) and kaminari (pagination).
 
-User data was seeded with FactoryGirl and Faker. To test admin functionality, log in with email: admin@gmail.com and password: admin1. To test as a regular user, log in with email: test@gmail.com, password: testing1
+User data was seeded with FactoryGirl and Faker. To test admin functionality, log in with email: admin@gmail.com and password: admin1. To test as a regular user, log in with email: test@gmail.com, password: testing1 
 
 Branch in progress: feature/load-movies-from-omdb
 
 After finishing the recommended functionalities and enhancements, I took the project further. The admins for the site can load movies from the Open Movie Database in addtion to manually submit each new movie by filling out a form as regular users do. Utilizing the OMDB API, an admin can load five movies at random each time.
 
 To Fix/Add:
-
-OMDB error response handling
-
-Automatic poster image uploading
-
-A link from the admin dashboard to the add-new-movies page
+- OMDB error response handling
+- Automatic poster image uploading
+- A link from the admin dashboard to the add-new-movies page
 
 In the future, I plan to expand the movie loading functionality and modify the Movie model to prevent duplicate entries.
