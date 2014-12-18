@@ -1,10 +1,4 @@
-<h2>Admin Dashboard</h2>
-<hr />
-
-<%= link_to "Create User", new_admin_user_path, class: "new_edit" %>
-&nbsp;
-<%= link_to "Load Movie", new_admin_movie_path, class: "new_edit" %>
-<hr />
+<%= render 'admin/dashboard' %>
 
 <%= paginate @admin_users %>
 <br />
