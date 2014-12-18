@@ -2,16 +2,20 @@ require 'open-uri'
 
 class Admin::MoviesController < ApplicationController
 
-  NUM_MOVIES = 5  # TODO: change to user input
-
   before_action :verify_admin
 
   def new
   end
 
   def create
-    NUM_MOVIES.times { @movie = Movie.create(Movie.load_from_omdb) }
-    redirect_to movies_path, notice: "Five new movies were loaded!"
+    movie_hash = Movie.load_omdb(params[:imdb_id], params[:title])
+    @movie = Movie.create(movie_hash)
+
+    if @movie.save
+      redirect_to movies_path, notice: "#{@movie.title} was loaded from OMDB."
+    else
+      render :new
+    end
   end
 
 end
