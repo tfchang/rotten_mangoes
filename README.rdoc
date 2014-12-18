@@ -1,8 +1,8 @@
 This web app began at Lighthouse Labs as a learning project to get acquainted with Rails. We were encouraged to use Bootstrap for styling, and gems such as carrierwave (file uploader) and kaminari (pagination).
 
 User data was seeded with FactoryGirl and Faker. 
-- To test admin functionality, log in with email: admin@gmail.com and password: admin1. 
-- To test as a regular user, log in with email: test@gmail.com, password: testing1 
+- Admin login - email: admin@gmail.com, password: admin1. 
+- User login - email: test@gmail.com, password: testing1 
 
 Work In Progress
 ----------------
@@ -10,5 +10,4 @@ Work In Progress
 After finishing the recommended functionalities and enhancements, I took the project further. The admins for the site can load movies from the Open Movie Database, in addtion to manually submit new movies by filling out a form as regular users do.
 
 To Fix/Add:
-- OMDB error response handling
 - Automatic poster image uploading
