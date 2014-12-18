@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :movies, only: [:new, :create]
   end
 
   root to: 'movies#index'

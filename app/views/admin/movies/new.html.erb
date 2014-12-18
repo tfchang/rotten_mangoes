@@ -1,0 +1,17 @@
+<h2>Load a new movie from OMDB!</h2>
+
+<h4>Search by either the movie's IMDB ID or its title</h4> 
+
+<%= form_tag(admin_movies_path, method: :post) do %>
+  <div class="input-group">
+    <%= label_tag(:imdb_id, "IMDB ID") %> <br />
+    <%= text_field_tag(:imdb_id, '', placeholder: "Eg: tt1285016") %>
+  </div>
+  <div class="input-group">
+    <%= label_tag(:title, "Movie Title") %> <br />
+    <%= text_field_tag(:title) %>
+  </div>
+  <div class="input-group">
+    <%= submit_tag("Load") %>
+  </div>
+<% end %>

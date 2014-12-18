@@ -1,6 +1,8 @@
 This web app began at Lighthouse Labs as a learning project to get acquainted with Rails. We were encouraged to use Bootstrap for styling, and gems such as carrierwave (file uploader) and kaminari (pagination).
 
-User data was seeded with FactoryGirl and Faker. To test admin functionality, log in with email: admin@gmail.com and password: admin1. To test as a regular user, log in with email: test@gmail.com, password: testing1 
+User data was seeded with FactoryGirl and Faker. 
+- To test admin functionality, log in with email: admin@gmail.com and password: admin1. 
+- To test as a regular user, log in with email: test@gmail.com, password: testing1 
 
 Branch in progress: feature/load-movies-from-omdb
 

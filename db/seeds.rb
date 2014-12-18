@@ -36,18 +36,18 @@ FactoryGirl.define do
     admin       false
   end
 
-  factory :movie, class: Movie do
-    title               { Faker::Commerce.product_name }
-    director            { Faker::Name.name }
-    runtime_in_minutes  { 70 + rand(80) }
-    description         { Faker::Lorem.sentence }
-    release_date        { Faker::Date.between(2.days.from_now, 30.days.from_now) }
-  end
+  # factory :movie, class: Movie do
+  #   title               { Faker::Commerce.product_name }
+  #   director            { Faker::Name.name }
+  #   runtime_in_minutes  { 70 + rand(80) }
+  #   description         { Faker::Lorem.sentence }
+  #   release_date        { Faker::Date.between(2.days.from_now, 30.days.from_now) }
+  # end
 end
 
 FactoryGirl.create(:admin)
 FactoryGirl.create(:test_user)
 40.times { FactoryGirl.create(:user) }
 
-40.times { FactoryGirl.create(:movie) }
+# 40.times { FactoryGirl.create(:movie) }
 
