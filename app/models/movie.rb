@@ -30,6 +30,10 @@ class Movie < ActiveRecord::Base
     q_runtime.blank? ? all : where("runtime_in_minutes <= ?", q_runtime) 
   }
 
+  def review_average
+    reviews.average(:rating_out_of_ten)
+  end
+
   def self.load_omdb(imdb_id, title)
     query = "http://www.omdbapi.com/?"
     result = ""
@@ -37,7 +41,7 @@ class Movie < ActiveRecord::Base
     # Search by IMDB ID first
     if imdb_id.present?
       i_query = query + "i=" + imdb_id  
-      # query << rand(MAX_ID).to_s << "&plot=short&r=json"
+      # i_query << "&plot=short&r=json"
       open(i_query) { |f| result = f.each_line.first }
     end
 
@@ -49,6 +53,8 @@ class Movie < ActiveRecord::Base
 
     result.blank? ? result : parse_omdb(result)
   end
+
+  private
 
   def self.parse_omdb(str)
     omdb_hash = JSON.parse(str)
@@ -72,18 +78,4 @@ class Movie < ActiveRecord::Base
     movies
   end
 
-  def review_average
-    reviews.average(:rating_out_of_ten)
-  end
-
-  # private
-
-  # This method was required in the tutorial, but it makes no sense to include only
-  # upcoming movies on a review website 
-  #  
-  # def release_date_in_future
-  #   if release_date.present? && release_date < Date.today
-  #     errors.add(:release_date, "should probably be in the future")
-  #   end
-  # end
 end
