@@ -18,4 +18,10 @@ class Admin::MoviesController < ApplicationController
     end
   end
 
+  private
+
+  def movie_params
+    params.require(:movie).permit(:imdb_id, :title)
+  end
+
 end

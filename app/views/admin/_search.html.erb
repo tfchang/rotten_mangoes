@@ -1,0 +1,11 @@
+<h3>Search Users</h3>
+
+<%= form_tag(admin_users_path, method: "get") do %>
+  <%= label_tag(:q_name, "First or Last Name: ") %>
+  <%= text_field_tag(:q_name) %>
+  <hr />
+  <%= label_tag(:q_email, "Email: ") %>
+  <%= text_field_tag(:q_email) %>
+  <hr />
+  <%= submit_tag("Search") %> | <%= button_tag("Reset", type: "reset") %>
+<% end %>
