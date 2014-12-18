@@ -43,7 +43,7 @@ class Movie < ActiveRecord::Base
 
     # If not finding movie by IMDB ID, search by title 
     if result.blank? && title.present?
-      t_query = query + "t=" + title
+      t_query = query + "t=" + title.gsub(/ /, '%20')
       open(t_query) { |f| result = f.each_line.first }
     end
 
