@@ -34,7 +34,8 @@ class Movie < ActiveRecord::Base
     reviews.average(:rating_out_of_ten)
   end
 
-  def self.load_omdb(imdb_id, title)
+  def self.load_omdb(m_params)
+    imdb_id, title = m_params[:imdb_id], m_params[:title]
     query = "http://www.omdbapi.com/?"
     result = ""
 

@@ -5,12 +5,19 @@ class Admin::MoviesController < ApplicationController
   before_action :verify_admin
 
   def new
+    @movie = Movie.new
   end
 
   def create
-    movie_hash = Movie.load_omdb(params[:imdb_id], params[:title])
-    @movie = Movie.create(movie_hash)
+    movie_hash = Movie.load_omdb(movie_params)
+    if movie_hash.blank?
+      @movie = Movie.new
+      @movie.errors[:base] << "Failed to load from OMDB!"
+      render :new
+      return
+    end
 
+    @movie = Movie.create(movie_hash)
     if @movie.save
       redirect_to movies_path, notice: "#{@movie.title} was loaded from OMDB."
     else

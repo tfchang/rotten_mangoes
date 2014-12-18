@@ -1,17 +1,28 @@
 <%= render 'admin/dashboard' %>
 
-<h3>Load a new movie from OMDB!</h3>
+<h2>Load a new movie from OMDB!</h2>
+
+<% if @movie.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
+    <ul>
+      <% @movie.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <h4>Search by either the movie's IMDB ID or its title</h4> 
 
-<%= form_tag(admin_movies_path, method: :post) do %>
+<%= form_for [:admin, @movie] do |f| %>
   <div class="input-group">
-    <%= label_tag(:imdb_id, "IMDB ID") %> <br />
-    <%= text_field_tag(:imdb_id, '', placeholder: "Eg: tt1285016") %>
+    <%= f.label(:imdb_id, "IMDB ID") %> <br />
+    <%= f.text_field(:imdb_id, placeholder: "Eg: tt1285016") %>
   </div>
   <div class="input-group">
-    <%= label_tag(:title, "Movie Title") %> <br />
-    <%= text_field_tag(:title) %>
+    <%= f.label(:title, "Movie Title") %> <br />
+    <%= f.text_field(:title) %>
   </div>
   <div class="input-group">
     <%= submit_tag("Load") %>
