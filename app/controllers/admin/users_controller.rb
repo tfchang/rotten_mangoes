@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   before_action :verify_admin
 
   def index
-    @admin_users = User.all.page(params[:page]).per(10)
+    @admin_users = search.order(created_at: :asc).page(params[:page]).per(10)
   end
 
   def new
@@ -50,5 +50,9 @@ class Admin::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :admin)
+  end
+
+  def search
+    User.query_name(params[:q_name]).query_email(params[:q_email])
   end
 end
